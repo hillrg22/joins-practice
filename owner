@@ -1,0 +1,15 @@
+\c galvanize
+\dt
+\d character
+\dt
+\dl
+SELECT * FROM character;
+\dt
+select * from student;
+\q
+\i joins.sql
+\d
+\dt
+\d owner
+/s owner
+\s owner
