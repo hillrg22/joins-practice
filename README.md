@@ -49,6 +49,102 @@
 
 
 
+# SQL Joins: Many-to-Many
+
+## Objectives
+
+  * Write many-to-many SQL joins
+    - INNER JOIN all fields
+    - INNER JOIN selected fields
+    - INNER JOIN selected fields with aliases
+  * Write many-to-many SQL joins that return subsets of data
+  * Explain syntax and structure of many-to-many SQL joins
+
+## Instructions
+
+  1. Create a database called many-joins
+  2. Connect to many-joins database using psql
+  3. Run joins.sql file while connected to db:
+    - `\i many-joins.sql`
+
+## Notes
+
+  * INNER JOIN all fields
+
+    ```sql
+    SELECT * FROM author
+    INNER JOIN author_book
+    ON author.id = author_book.author_id
+
+    INNER JOIN book
+
+    ON book.id = author_book.book_id;
+
+    ```
+
+  * INNER JOIN selected fields
+    - author name
+    - author email
+    - book title
+
+    ```sql
+    SELECT author.name, author.email, book.title  FROM author
+    INNER JOIN author_book
+    ON author.id = author_book.author_id
+    INNER JOIN book
+    ON book.id = author_book.book_id;
+    ```
+
+  * INNER JOIN selected fields with aliases
+    - author id (aliased)
+    - author name
+    - book id (aliased)
+    - book title
+    ```sql
+    SELECT author.id AS author_id, author.name, book.id AS book_id, book.title FROM author
+    INNER JOIN author_book
+    ON author.id = author_book.author_id
+    INNER JOIN book
+    ON book.id = author_book.book_id;
+    ```
+
+  * INNER JOIN subset of data
+    - All fields for 'Mark' and his book(s)
+    ```sql
+    SELECT * FROM author
+    INNER JOIN author_book
+    ON author.id = author_book.author_id
+
+    INNER JOIN book
+    ON book.id = author_book.book_id
+
+    WHERE author.id = 2 ;
+    -- or WHERE author.name = 'Mark'
+    
+    ```
+
+
+  * INNER JOIN subset of data
+    - All fields for 'Modern Romance' and its author(s)
+    ```sql
+    SELECT * FROM author
+    INNER JOIN author_book
+    ON author.id = author_book.author_id
+
+    INNER JOIN book
+    ON book.id = author_book.book_id
+
+    Where book.id = 4 ;
+
+
+
+
+
+
+
+
+
+
 ## Resources
 
 * [Learn - Joins Syntax](https://github.com/gSchool/sql-curriculum/blob/master/Joins.md#joins---syntax)
